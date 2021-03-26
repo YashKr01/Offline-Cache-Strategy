@@ -1,4 +1,4 @@
-package com.example.offlinecache
+package com.example.offlinecache.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,9 @@ import com.example.offlinecache.data.Restaurant
 import com.example.offlinecache.databinding.RestaurantItemBinding
 
 class RestaurantAdapter :
-    ListAdapter<Restaurant, RestaurantAdapter.MyViewHolder>(RestaurantComparator()) {
+    ListAdapter<Restaurant, RestaurantAdapter.MyViewHolder>(
+        RestaurantComparator()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
