@@ -1,7 +1,10 @@
 package com.example.offlinecache.di
 
+import android.app.Application
+import androidx.room.Room
 import com.example.offlinecache.api.RestaurantApi
 import com.example.offlinecache.api.RestaurantApi.Companion.BASE_URL
+import com.example.offlinecache.data.RestaurantDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,5 +29,12 @@ object AppModule {
     @Singleton
     fun provideRestaurantApi(retrofit: Retrofit): RestaurantApi =
         retrofit.create(RestaurantApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): RestaurantDatabase =
+        Room.databaseBuilder(app, RestaurantDatabase::class.java, "table")
+            .build()
+
 
 }
